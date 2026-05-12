@@ -378,30 +378,6 @@ if st.session_state.analysis_done and st.session_state.result:
             </div>
             """, unsafe_allow_html=True)
 
-            if selected_purposes:
-                purpose_text = ", ".join(selected_purposes)
-
-                st.markdown(f"""
-                <p class='small-text'>
-                    <b>Purpose:</b> {purpose_text}
-                </p>
-                """, unsafe_allow_html=True)
-
-            st.markdown("""
-    purpose_text = ", ".join(selected_purposes)
-
-    st.markdown(f"""
-    <p class='small-text'>
-        <b>Purpose:</b> {purpose_text}
-    </p>
-    """, unsafe_allow_html=True)
-            </div>
-            """, unsafe_allow_html=True)
-
-        st.markdown("</div>", unsafe_allow_html=True)
-
-
-
 
 # ================= FINAL DSS =================
 if st.session_state.analysis_done and st.session_state.result:
