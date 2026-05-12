@@ -10,10 +10,21 @@ from streamlit.components.v1 import html
 st.set_page_config(page_title="DSS Auto Generator", layout="wide")
 
 # ================= GOOGLE PLAY CONSOLE UI =================
+st.markdown("""
+<style>
+
+body {
+    background-color: #f1f3f4;
+}
+
+.stButton > button {
+    background-color: #1a73e8;
+    color: white;
     border: none;
     padding: 10px 24px;
     font-weight: 600;
     font-size: 15px;
+    border-radius: 8px;
 }
 
 .stButton > button:hover {
@@ -85,17 +96,6 @@ st.set_page_config(page_title="DSS Auto Generator", layout="wide")
 }
 
 </style>
-""", unsafe_allow_html=True)
-
-
-st.markdown("""
-<div class='play-card'>
-    <h1>Google Play Data Safety Section Generator</h1>
-    <p class='small-text'>
-        Generate Google Play Data Safety Section using
-        Android Manifest + Statistical Inference.
-    </p>
-</div>
 """, unsafe_allow_html=True)
 
 
@@ -332,9 +332,9 @@ if st.session_state.analysis_done and st.session_state.result:
     st.success("DSS Generated")
 
     
-for sec in ["collected", "shared"]:
+    for sec in ["collected", "shared"]:
 
-    section_title = "📥 Data Collected" if sec == "collected" else "🔄 Data Shared"
+        section_title = "📥 Data Collected" if sec == "collected" else "🔄 Data Shared"
 
     st.markdown(
         f"<div class='section-title'>{section_title}</div>",
@@ -368,9 +368,20 @@ for sec in ["collected", "shared"]:
                 </div>
 
                 <p class='small-text'>
-                    Optional Rate: {item['optional_score']}%
+    Optional Rate: {item['optional_score']}%
+</p>
+""", unsafe_allow_html=True)
+
+            if selected_purposes:
+                purpose_text = ", ".join(selected_purposes)
+
+                st.markdown(f"""
+                <p class='small-text'>
+                    <b>Purpose:</b> {purpose_text}
                 </p>
-if selected_purposes:
+                """, unsafe_allow_html=True)
+
+            st.markdown("""
     purpose_text = ", ".join(selected_purposes)
 
     st.markdown(f"""
