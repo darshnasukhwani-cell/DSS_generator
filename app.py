@@ -368,9 +368,15 @@ if st.session_state.analysis_done and st.session_state.result:
                 </div>
 
                 <p class='small-text'>
-    Optional Rate: {item['optional_score']}%
-</p>
-""", unsafe_allow_html=True)
+                    Optional Rate: {item['optional_score']}%
+                </p>
+
+                <p class='small-text'>
+                    <b>Purpose:</b> {purpose_text}
+                </p>
+
+            </div>
+            """, unsafe_allow_html=True)
 
             if selected_purposes:
                 purpose_text = ", ".join(selected_purposes)
