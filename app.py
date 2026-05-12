@@ -4,15 +4,117 @@ import xml.etree.ElementTree as ET
 import os
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
+from streamlit.components.v1 import html
 
 # ================= UI =================
 st.set_page_config(page_title="DSS Auto Generator", layout="wide")
 
-st.title("DSS Auto Generator")
-st.write("Data-driven DSS using Manifest + Statistical + Inference")
+# ================= GOOGLE PLAY CONSOLE UI =================
+    border: none;
+    padding: 10px 24px;
+    font-weight: 600;
+    font-size: 15px;
+}
 
-manifest_file = st.file_uploader("Upload Manifest file", type=["xml"])
-category = st.selectbox("App Category", ["Shopping", "Communication", "Dating", "Gaming"])
+.stButton > button:hover {
+    background-color: #1765cc;
+    color: white;
+}
+
+.stSelectbox label,
+.stTextInput label,
+.stFileUploader label {
+    font-weight: 600;
+    color: #202124;
+}
+
+.play-card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #dadce0;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(60,64,67,.15);
+}
+
+.data-chip {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #1967d2;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #202124;
+}
+
+.subtype-box {
+    border: 1px solid #dadce0;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: #fff;
+}
+
+.optional-tag {
+    color: #137333;
+    font-weight: 600;
+}
+
+.required-tag {
+    color: #b3261e;
+    font-weight: 600;
+}
+
+.common-tag {
+    color: #9334e6;
+    font-weight: 600;
+}
+
+.small-text {
+    color: #5f6368;
+    font-size: 14px;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+<div class='play-card'>
+    <h1>Google Play Data Safety Section Generator</h1>
+    <p class='small-text'>
+        Generate Google Play Data Safety Section using
+        Android Manifest + Statistical Inference.
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+
+
+st.markdown("<div class='play-card'>", unsafe_allow_html=True)
+
+manifest_file = st.file_uploader(
+    "Upload ",
+    type=["xml"]
+)
+
+category = st.selectbox(
+    "Select Application Category",
+    ["Shopping", "Communication", "Dating", "Gaming"]
+)
+
+st.markdown("</div>", unsafe_allow_html=True)
+
+
 
 # ================= PURPOSE OPTIONS =================
 PURPOSE_OPTIONS = [
@@ -186,6 +288,24 @@ def generate_pdf(result):
     return "DSS_Output.pdf"
 
 # ================= GENERATE DSS =================
+
+PURPOSES = [
+    "App functionality",
+    "Analytics",
+    "Developer communications",
+    "Advertising or marketing",
+    "Fraud prevention, security, and compliance",
+    "Personalization",
+    "Account management"
+]
+
+selected_purposes = st.multiselect(
+    "Select Purpose(s)",
+    PURPOSES
+)
+
+
+
 if st.button("Generate DSS"):
 
     if not manifest_file:
@@ -211,28 +331,60 @@ if st.session_state.analysis_done and st.session_state.result:
     result = st.session_state.result
     st.success("DSS Generated")
 
-    for sec in result:
-        st.markdown(f"### {sec.upper()}")
+    
+for sec in ["collected", "shared"]:
 
-        for dtype, items in result[sec].items():
-            st.markdown(f"**{dtype}**")
+    section_title = "📥 Data Collected" if sec == "collected" else "🔄 Data Shared"
 
-            for i, item in enumerate(items):
+    st.markdown(
+        f"<div class='section-title'>{section_title}</div>",
+        unsafe_allow_html=True
+    )
 
-                key = f"{sec}_{dtype}_{i}"
+    for dtype, items in result.get(sec, {}).items():
 
-                purpose = st.multiselect(
-                    f"Select purpose for {item['subtype']}",
-                    PURPOSE_OPTIONS,
-                    key=key
-                )
+        st.markdown(f"""
+        <div class='play-card'>
+            <h3>{dtype}</h3>
+        """, unsafe_allow_html=True)
 
-                item["purpose"] = purpose
+        for item in items:
 
-                st.markdown(
-                    f"- **{item['subtype']}** "
-                    f"({item['label']} - Optional rate: {item['optional_score']}%)"
-                )
+            label = item['label']
+
+            if label == "Optional":
+                label_html = f"<span class='optional-tag'>Optional</span>"
+            elif label == "Required":
+                label_html = f"<span class='required-tag'>Required</span>"
+            else:
+                label_html = f"<span class='common-tag'>Common</span>"
+
+            st.markdown(f"""
+            <div class='subtype-box'>
+                <h4>{item['subtype']}</h4>
+
+                <div class='data-chip'>
+                    {sec.title()} • {label}
+                </div>
+
+                <p class='small-text'>
+                    Optional Rate: {item['optional_score']}%
+                </p>
+if selected_purposes:
+    purpose_text = ", ".join(selected_purposes)
+
+    st.markdown(f"""
+    <p class='small-text'>
+        <b>Purpose:</b> {purpose_text}
+    </p>
+    """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+
+
 
 # ================= FINAL DSS =================
 if st.session_state.analysis_done and st.session_state.result:
