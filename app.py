@@ -68,6 +68,7 @@ PERMISSION_MAP = {
     "android.permission.READ_PHONE_NUMBERS": ("Personal info", "Phone number", "collected"),
     "android.permission.CALL_PHONE": ("App activity", "In-app actions", "collected"),
 
+    "android.permission.NEARBY_WIFI_DEVICES": ("Location", "Approximate location", "collected"),
     "android.permission.READ_SMS": ("Messages", "SMS messages", "collected"),
     "android.permission.RECEIVE_SMS": ("Messages", "SMS messages", "collected"),
     "android.permission.SEND_SMS": ("Messages", "SMS messages", "collected"),
@@ -83,6 +84,69 @@ PERMISSION_MAP = {
 
     "android.permission.INTERNET": ("App activity", "App interactions", "shared"),
     "android.permission.ACCESS_NETWORK_STATE": ("App activity", "App interactions", "shared"),
+
+    "com.google.android.gms.permission.AD_ID": ("Device or other IDs", "Advertising ID", "shared"),
+
+    "android.permission.ACCESS_ADSERVICES_AD_ID": ("Device or other IDs", "Advertising ID", "shared"),
+
+    "android.permission.PACKAGE_USAGE_STATS": ("App activity", "App interactions", "collected"),
+
+    "android.permission.NEARBY_WIFI_DEVICES": ("Location", "Approximate location", "collected"),
+    "android.permission.READ_MEDIA_VISUAL_USER_SELECTED": ("Photos and videos", "Photos", "collected"),
+
+    "android.permission.READ_PRIVILEGED_PHONE_STATE": ("Device or other IDs", "Device ID", "collected"),
+    "android.permission.ANSWER_PHONE_CALLS": ("App activity", "In-app actions", "collected"),
+
+    "android.permission.READ_CALL_LOG": ("Messages", "Other in-app messages", "collected"),
+    "android.permission.WRITE_CALL_LOG": ("Messages", "Other in-app messages", "collected"),
+
+    "com.android.voicemail.permission.ADD_VOICEMAIL": ("Messages", "Voice messages", "collected"),
+
+    "android.permission.health.READ_HEART_RATE": ("Health and fitness", "Health data", "collected"),
+    "android.permission.health.READ_STEPS": ("Health and fitness", "Physical activity", "collected"),
+    "android.permission.health.READ_SLEEP": ("Health and fitness", "Health data", "collected"),
+
+    "android.permission.USE_BIOMETRIC": ("Personal info", "User IDs", "collected"),
+    "android.permission.USE_FINGERPRINT": ("Personal info", "User IDs", "collected"),
+
+    "android.permission.ACCESS_WIFI_STATE": ("App activity", "App interactions", "shared"),
+    "android.permission.CHANGE_WIFI_STATE": ("App activity", "App interactions", "shared"),
+    "android.permission.CHANGE_NETWORK_STATE": ("App activity", "App interactions", "shared"),
+
+    "android.permission.NFC": ("Nearby devices", "Nearby devices", "collected"),
+
+    "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION": ("Files and docs", "Files", "collected"),
+    "android.permission.MANAGE_ACCOUNTS": ("Personal info", "Email address", "collected"),
+    "android.permission.AUTHENTICATE_ACCOUNTS": ("Personal info", "User IDs", "collected"),
+    "android.permission.USE_CREDENTIALS": ("Personal info", "User IDs", "collected"),
+
+    "android.permission.REQUEST_INSTALL_PACKAGES": ("App activity", "App interactions", "shared"),
+    "android.permission.REQUEST_DELETE_PACKAGES": ("App activity", "App interactions", "shared"),
+    "android.permission.DELETE_PACKAGES": ("App activity", "App interactions", "shared"),
+    "android.permission.INSTALL_PACKAGES": ("App activity", "App interactions", "shared"),
+    "android.permission.QUERY_ALL_PACKAGES": ("App activity", "App interactions", "collected"),
+    "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION": ("App activity", "App interactions", "shared"),
+
+    "com.google.android.c2dm.permission.RECEIVE": ("App activity", "User notifications", "collected"),
+    "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE": ("Device or other IDs", "Advertising ID", "shared"),
+    "android.permission.ACCESS_ADSERVICES_ATTRIBUTION": ("Device or other IDs", "Advertising ID", "shared"),
+
+    "android.permission.RECEIVE_BOOT_COMPLETED": ("App activity", "App interactions", "collected"),
+    "android.permission.FOREGROUND_SERVICE": ("App activity", "App interactions", "collected"),
+    "android.permission.WAKE_LOCK": ("App activity", "App interactions", "collected"),
+
+    "android.permission.GET_PACKAGE_SIZE": ("Files and docs", "Files", "collected"),
+
+    "android.permission.ACCESS_SUPERUSER": ("App activity", "App interactions", "collected"),
+    "android.permission.BLUETOOTH_ADVERTISE": ("Nearby devices", "Bluetooth devices", "collected"),
+    "android.permission.BODY_SENSORS_BACKGROUND": ("Health and fitness", "Health data", "collected"),
+    "android.permission.SCHEDULE_EXACT_ALARM": ("App activity", "App interactions", "collected"),
+    "android.permission.UWB_RANGING": ("Nearby devices", "Nearby device scanning", "collected"),
+    "android.permission.MEDIA_CONTENT_CONTROL": ("Audio", "Audio files", "collected"),
+    "android.permission.READ_CLIPBOARD_IN_BACKGROUND": ("Messages", "Other in-app messages", "collected"),
+    "android.permission.READ_PROFILE": ("Personal info", "Name", "collected"),
+    "android.permission.SEND_RESPOND_VIA_MESSAGE": ("Messages", "SMS messages", "collected"),
+    "android.permission.HIGH_SAMPLING_RATE_SENSORS": ("Health and fitness", "Physical activity", "collected"),
 }
 
 
