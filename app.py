@@ -6,10 +6,10 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
 # ================= UI =================
-st.set_page_config(page_title="DSS Auto Generator", layout="wide")
+st.set_page_config(page_title="Google DSS Recommendation", layout="wide")
 
-st.title("DSS Auto Generator")
-st.write("Data-driven DSS using Manifest + Statistical + Inference")
+st.title("Google DSS Recommendation")
+st.write("Google DSS Recommendations using application's Manifest + Category specific knowledge base")
 
 manifest_file = st.file_uploader("Upload Manifest file", type=["xml"])
 category = st.selectbox("App Category", ["Shopping", "Communication", "Dating", "Gaming"])
@@ -196,9 +196,9 @@ def map_permissions(permissions):
 
 # ================= CLASSIFY =================
 def classify(optional):
-    if optional >= 75:
+    if optional >= 60:
         return "Optional"
-    elif optional <= 25:
+    elif optional < 60:
         return "Required"
     return "Optional"
 
